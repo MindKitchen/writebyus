@@ -6,7 +6,9 @@
     {{/each}}
   </div>
   {{#if currentUser}}
-    {{> enterSentence}}
+    {{#if clock}}
+      {{> enterSentence}}
+    {{/if}}
   {{/if}}
 </template>
 
