@@ -1,0 +1,17 @@
+# Meteor packages used by this project, one per line.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+accounts-password
+alanning:roles
+iron:router
+waitingkuo:normalize
+fourseven:scss@0.9.5
+wolves:neat
+wolves:bitters
+wolves:bourbon
+accounts-ui
+chrismbeckett:fontawesome4
+

@@ -1,0 +1,31 @@
+<template name="write">
+  <div class="wbu-story">
+    <span class="wbu-story__timeleft">{{timeleft}}</span>
+    {{#each sentences}}
+      {{> sentence}}
+    {{/each}}
+  </div>
+  {{#if currentUser}}
+    {{> enterSentence}}
+  {{/if}}
+</template>
+
+<template name="sentence">
+  <p class="sentence {{status}} {{voted}}">
+    {{text}}
+    <span class="sentence__author">&mdash;{{author}}</span>
+    {{#if accepted}}
+    {{else}}
+      {{votes}}
+    {{/if}}
+  </p>
+</template>
+
+<template name="enterSentence">
+  <form class="wbu-form">
+    <span>
+      <input name="text" id="text" type="text" required />
+      <i class="fa fa-fw fa-pencil"></i>
+    </span>
+  </form>
+</template>

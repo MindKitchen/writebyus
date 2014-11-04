@@ -1,0 +1,38 @@
+$wbu-color-stories: #03A9F4
+
+.wbu-stories
+  margin: 0
+  padding: 0
+  overflow: auto
+
+  li
+    list-style: none
+    position: relative
+    box-shadow: inset rgba(0, 0, 0, 0.20) 0px 2px 5px
+
+    &:last-of-type
+      box-shadow: inset rgba(0, 0, 0, 0.20) 0px 2px 5px, rgba(0, 0, 0, 0.50) 0px 2px 5px
+
+    &:nth-of-type(3n + 1)
+      background: darken($wbu-color-stories, 10%)
+
+    &:nth-of-type(3n + 2)
+      background: darken($wbu-color-stories, 15%)
+
+    &:nth-of-type(3n + 3)
+      background: darken($wbu-color-stories, 20%)
+
+    a
+      box-sizing: border-box
+      display: block
+      text-decoration: none
+      padding: 1em
+      width: 100%
+      color: white
+      font-size: 1.25em
+
+      &:focus
+        background: rgba(255, 255, 255, 0.5)
+        text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px
+        outline: none
+

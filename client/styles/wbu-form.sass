@@ -1,0 +1,38 @@
+.wbu-form
+  background: #333
+  height: 3em
+
+  &.disabled
+    display: none
+
+  span
+    position: relative
+    i
+      color: white
+      text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 0px
+      position: absolute
+      top: 0.85em
+      left: 0.75em
+      z-index: 1
+
+  input
+    background: none
+    color: white
+    border: none
+    border-radius: 0
+    border-bottom: 1px solid #666
+    margin: 0 1em 0 2em
+    padding: 0.8em 0.10em 0.2em
+    float: right
+
+    &:focus
+      box-shadow: none
+      border: none
+      border-bottom: 1px solid #4285f4
+      outline: none
+
+      & + i
+        color: #4285f4
+
+    &:-webkit-autofill
+      box-shadow: 0 0 0px 1000px #333 inset

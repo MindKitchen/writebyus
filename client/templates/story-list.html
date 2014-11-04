@@ -1,0 +1,25 @@
+<template name="storyList">
+  <ul class="wbu-stories">
+  {{#each stories}}
+    {{> story}}
+  {{/each}}
+  </ul>
+  {{#if currentUser}}
+    {{> newStory}}
+  {{/if}}
+</template>
+
+<template name="story">
+  <li>
+    <a href="{{pathFor 'write'}}"><span>{{name}}</span></a>
+  </li>
+</template>
+
+<template name="newStory">
+  <form class="wbu-form ">
+    <span>
+      <input name="name" id="name" type="text" required />
+      <i class="fa fa-fw fa-book"></i>
+    </span>
+  </form>
+</template>
