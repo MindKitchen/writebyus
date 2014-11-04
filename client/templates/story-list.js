@@ -27,7 +27,7 @@ Template.newStory.events({
       ownerId: Meteor.userId(),
       status: "open",
       time: Date.now(),
-      timeout: 45000
+      timeout: 45
     };
 
     Meteor.call("createStory", newStory, function (error, result) {

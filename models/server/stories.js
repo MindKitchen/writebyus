@@ -20,13 +20,9 @@ Meteor.methods({
               }).reduce(function (p, c) { return p + c; }, 0)
           };
         }).reduce(function (p, c) {
-          //console.log("p ", p);
-          //console.log("c ", c);
           // Find the sentence with the most votes
           return (c.votes < p.votes) ? p : c;
         }, { _id: null, vote: -1 });
-
-      //console.log("winner ", winner);
 
       // Accept winner
       Sentences.update({ _id: winner._id }, {
@@ -47,17 +43,20 @@ Meteor.methods({
       }, {
         multi: true
       });
-
-      // Update next interval 
-      Stories.update(story._id, {
-        $set: {
-          interval: Date.now() + story.timeout
-        }
-      });
     };
 
-    story.interval = Date.now() + story.timeout;
-    Meteor.setInterval(selectWinner, story.timeout);
+    // Start the clock!
+    story.clock = story.timeout;
+    var interval = Meteor.setInterval(function tick () {
+      story.clock--;
+      Stories.update(story._id, story);
+
+      if (story.clock === 0) {
+        selectWinner();
+        // Reset the clock
+        story.clock = story.timeout + 1;
+      }
+    }, 1000);
 
     story._id = Stories.insert(story);
     return story._id;

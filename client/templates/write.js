@@ -1,9 +1,6 @@
 Template.write.helpers({
   sentences: function () {
     return Sentences.find({ storyId: this._id, status: { $ne: "rejected" } });
-  },
-  timeleft: function () {
-    return Math.round(Session.get("timeleft") / 1000);
   }
 });
 
@@ -21,17 +18,6 @@ Template.enterSentence.resize = function () {
 Template.enterSentence.rendered = function () {
   $(window).resize(Template.enterSentence.resize);
   Template.enterSentence.resize();
-
-  // Reset countdown timer
-  Meteor.clearInterval(Session.get("interval"));
-  // Sync up as close to 1s as possible
-  console.log((this.data.interval - Date.now() - Session.get("clockOffset")) % 1000)
-  Meteor.setTimeout(function () {
-    Session.set("interval", Meteor.setInterval(function () {
-      var interval = Stories.findOne(Session.get("currentStory")).interval;
-      Session.set("timeleft", interval - Date.now() - Session.get("clockOffset"));
-    }, 1000));
-  }, (this.data.interval - Date.now() - Session.get("clockOffset")) % 1000);
 };
 
 Template.enterSentence.helpers({
