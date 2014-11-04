@@ -9,7 +9,12 @@ Template.newStory.resize = function () {
   $(".wbu-form input")
     .width($(window).width() - (iconWidth * 3.25));
   $(".wbu-stories")
-    .height($(window).height() - $(".wbu-form").height() - $(".wbu-header").outerHeight());
+    .height(
+      $(window).height() -
+      $(".wbu-form").outerHeight() -
+      $(".wbu-header").outerHeight() -
+      $(".wbu-introduction").outerHeight()
+    );
 };
 
 Template.newStory.rendered = function () {
