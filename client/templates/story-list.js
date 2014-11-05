@@ -1,7 +1,21 @@
 Template.storyList.helpers({
   stories: function () {
     return Stories.find();
+  },
+  introductionDismissed: function () {
+    return Session.get("introduction:dismissed") ? "wbu-introduction--dismissed" : "";
   }
+});
+
+var dismissIntroduction = function (e) {
+  e.preventDefault();
+  Session.set("introduction:dismissed", true);
+  Template.newStory.resize();
+};
+
+Template.storyList.events({
+  "click .wbu-introduction__close": dismissIntroduction,
+  "click .wbu-introduction__gotit": dismissIntroduction
 });
 
 Template.newStory.resize = function () {
@@ -13,7 +27,7 @@ Template.newStory.resize = function () {
       $(window).height() -
       $(".wbu-form").outerHeight() -
       $(".wbu-header").outerHeight() -
-      $(".wbu-introduction").outerHeight()
+      (Session.get("introduction:dismissed") ? 0 : $(".wbu-introduction").outerHeight())
     );
 };
 

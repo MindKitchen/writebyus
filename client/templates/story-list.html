@@ -1,5 +1,6 @@
 <template name="storyList">
-  <div class="wbu-introduction">
+  <div class="wbu-introduction {{introductionDismissed}}">
+    <i class="fa fa-lg fa-times wbu-introduction__close"></i>
     <p>Write By Us is a collaborative writing game.</p>
     <h3>How it works:</h3>
     <ol>
@@ -8,6 +9,7 @@
       <li>Vote for your favorite submissions.</li>
       <li>The submission with the most votes is selected as the next sentence in the story when the clock rolls over.</li>
     </ol>
+    <button class="wbu-introduction__gotit">Let's Write</button>
   </div>
   <ul class="wbu-stories">
   {{#each stories}}

@@ -4,6 +4,29 @@ $wbu-color-stories: #03A9F4
   background: #D81B60
   color: white
   padding: 2em 1em
+  position: relative
+
+  &__close
+    position: absolute
+    top: 0.5em
+    right: 0.5em
+    cursor: pointer
+
+  &__gotit
+    background: white
+    color: rgba(0, 0, 0, 0.87)
+    border: 0
+    margin-top: 2em
+    padding: 0.75em 1.25em
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 5px
+    position: relative
+    font-family: "Roboto", sans-serif
+    font-size: 0.9em
+    text-transform: uppercase
+    border-radius: 3
+
+  &--dismissed
+    display: none
 
   p
     margin: 0
