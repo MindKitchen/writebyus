@@ -51,7 +51,7 @@ Meteor.methods({
       story.clock--;
       Stories.update(story._id, story);
 
-      if (story.clock >= 0) {
+      if (story.clock <= 0) {
         selectWinner();
         // Reset the clock
         story.clock = story.timeout + 1;
