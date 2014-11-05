@@ -14,7 +14,6 @@ var dismissIntroduction = function (e) {
 };
 
 Template.storyList.events({
-  "click .wbu-introduction__close": dismissIntroduction,
   "click .wbu-introduction__gotit": dismissIntroduction
 });
 
