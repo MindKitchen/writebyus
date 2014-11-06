@@ -6,7 +6,7 @@ var users = [
 ];
 
 var stories = [
-  { "name" : "Bel-Air" },
+  { "name" : "Bel-Air", "time": "Mon Sep 10 1990 20:00:00 GMT-0700" },
   { "name" : "The Corpse is Exquisite" },
 ];
 
@@ -45,6 +45,12 @@ Meteor.startup(function() {
 
   if (Stories.find().count() === 0) {
     stories.forEach(function (story) {
+      story.ownerId = Meteor.users.findOne()._id;
+      story.status = story.status || "open";
+      story.time = new Date(story.time) || Date.now();
+      story.timeout = story.timeout || 45;
+      story.clock = story.clock || 45;
+
       console.log("Seeding story: ", story);
       Stories.insert(story);
     });
